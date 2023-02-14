@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import '../components/constants.dart';
 import '../components/footer.dart';
 import '../components/searchbar.dart';
+import '../othercomp/horizontallist.dart';
+import '../utils/places.dart';
 
 class Explore extends StatelessWidget {
   const Explore({super.key});
@@ -14,7 +15,7 @@ class Explore extends StatelessWidget {
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Padding(
                 padding: EdgeInsets.all(16.0),
                 child: Text(
@@ -26,7 +27,23 @@ class Explore extends StatelessWidget {
                   ),
                 ),
               ),
-              CardDisplay(),
+              buildHorizontalList(context, 250.0),
+               Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Text(
+                  'Vehicles',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25.0,
+                  ),
+                ),
+              ),
+              buildHorizontalList(context, 150.0),
+              SizedBox(height: 20.0,),
+              SearchBar(label: "Search for pickup"),
+              SizedBox(height: 10.0,),
+              SearchBar(label: "Search for destination"),
             ],
           ),
         ),
@@ -35,68 +52,21 @@ class Explore extends StatelessWidget {
           child: FooterNavBar(),
         ));
   }
-}
 
-class CardDisplay extends StatefulWidget {
-  const CardDisplay({super.key});
-
-  @override
-  State<CardDisplay> createState() => _CardDisplayState();
-}
-
-class _CardDisplayState extends State<CardDisplay> {
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Container(
-          decoration: BoxDecoration(
-            color: Colors.grey[200],
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-          ),
-          child: Row(
-            children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 3,
-                height: MediaQuery.of(context).size.height / 3.5,
-                child: Card(
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 120,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: NetworkImage("https://picsum.photos/200"),
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        color: kgrey,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Text("Title 1"),
-                              SizedBox(height: 5.0),
-                              Text(
-                                "Location details 1",
-                                selectionColor: kwhite,
-                                style: TextStyle(
-                                  fontSize: 10,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          )),
+  buildHorizontalList(BuildContext context, var height) {
+    return Container(
+      padding: EdgeInsets.only(top: 10.0, left: 20.0),
+      height: height,
+      width: MediaQuery.of(context).size.width,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        primary: false,
+        itemCount: places == null ? 0 : places.length,
+        itemBuilder: (BuildContext context, int index) {
+          Map place = places.reversed.toList()[index];
+          return HorizontalPlaceItem(place: place, Sheight: height,);
+        },
+      ),
     );
   }
 }
