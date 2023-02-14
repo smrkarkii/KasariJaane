@@ -13,7 +13,7 @@ class ResultPage extends StatelessWidget {
         body: SafeArea(
           child: Column(
             children: [
-              SearchBar(),
+              SearchBar(label:'Search for result'),
               OtherElements(),
             ],
           ),

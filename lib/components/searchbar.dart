@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 
 class SearchBar extends StatelessWidget {
-  const SearchBar({super.key});
+  SearchBar({Key? key, required this.label}):super(key:key);
+  String label;
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +17,12 @@ class SearchBar extends StatelessWidget {
       child: TextField(
         decoration: InputDecoration(
           prefixIcon: Icon(Icons.search, color: kdarkpurple,),
-          hintText: "Search for results",
+          hintText: label,
           border: InputBorder.none,
           contentPadding: const EdgeInsets.all(16.0),
           suffixIcon: Icon(Icons.tune, color: kdarkpurple,),
         ),
       ),
-      
-
     );
   }
 }
