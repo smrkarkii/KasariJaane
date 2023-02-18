@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './passenger/explore.dart';
+import './mainhome.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home:Explore(),
+      home:MainHome(),
     );
   }
 }
