@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:kasarijaane/components/constants.dart';
 import 'package:latlong2/latlong.dart';
 import '../components/footer.dart';
 import '../components/searchbar.dart';
@@ -32,6 +33,7 @@ class MainHome extends StatelessWidget {
         .toList();
 
     return Scaffold(
+      backgroundColor: kgrey,
       body: Column(
         children: [
           Flexible(
@@ -41,10 +43,7 @@ class MainHome extends StatelessWidget {
           SearchBar(label: 'Search for destination',),
         ],
       ),
-      bottomNavigationBar: SizedBox(
-        height: 70,
-        child: FooterNavBar(),
-      ),
+      
     );
   }
 }

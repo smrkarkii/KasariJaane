@@ -26,7 +26,7 @@ class FooterNavBarState extends State<FooterNavBar> {
       items: [
         BottomNavigationBarItem(
           icon: _iconList[0],
-          label: 'Home'
+          label: 'Home',
         ),
         BottomNavigationBarItem(
           icon: _iconList[1],
