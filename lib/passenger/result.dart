@@ -4,7 +4,8 @@ import '../components/constants.dart';
 import '../components/searchbar.dart';
 
 class ResultPage extends StatelessWidget {
-  const ResultPage({super.key});
+  const ResultPage({Key? key, required this.query}) : super(key: key);
+  final String query;
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +18,7 @@ class ResultPage extends StatelessWidget {
               OtherElements(),
             ],
           ),
-        ),
-        bottomNavigationBar: SizedBox(
-          height: 70,
-          child: FooterNavBar(),
-        ));
+        ),);
   }
 }
 

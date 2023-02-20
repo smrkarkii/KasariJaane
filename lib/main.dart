@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kasarijaane/components/searchbar.dart';
 import 'components/constants.dart';
 import './passenger/explore.dart';
 import './passenger/notification.dart';
@@ -9,14 +10,13 @@ void main() {
   runApp(const MyApp());
 }
 
-//TODO implement pagecontroller/pageview to navigate to pages
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
+      home:HomePage(),
     );
   }
 }

@@ -2,21 +2,42 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:kasarijaane/components/constants.dart';
 import 'package:latlong2/latlong.dart';
-import '../components/footer.dart';
 import '../components/searchbar.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
 
-class MainHome extends StatelessWidget {
+class MainHome extends StatefulWidget {
   MainHome({Key? key}) : super(key: key);
 
   @override
+  State<MainHome> createState() => _MainHomeState();
+}
+
+class _MainHomeState extends State<MainHome> {
+LatLng center = LatLng(27.74238819677683, 85.33275784413591);
+@override
+  void initState() {
+    getCenter();
+    super.initState();
+  }
+
+  void getCenter() async {
+    Position position = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high,
+    );
+    setState(() {
+      center = LatLng(position.latitude, position.longitude);
+    });
+  }
+
+
+  @override
   Widget build(BuildContext context) {
-    final center = LatLng(27.74238819677683, 85.33275784413591);
     List<LatLng> latLngList = [
       LatLng(27.72, 85.33),
       LatLng(27.617245, 85.323459),
       LatLng(27.687945, 85.353459),
-      LatLng(27.74238819677683, 85.33275784413591)
+      LatLng(center.latitude, center.longitude),
     ];
 
     List<Marker> _markers = latLngList
@@ -37,13 +58,19 @@ class MainHome extends StatelessWidget {
       body: Column(
         children: [
           Flexible(
-            child: Mapintro(center: center,markers: _markers,),
+            child: Mapintro(
+              center: center,
+              markers: _markers,
+            ),
           ),
-          SearchBar(label: 'Search for pickup',),
-          SearchBar(label: 'Search for destination',),
+          SearchBar(
+            label: 'Search for pickup',
+          ),
+          SearchBar(
+            label: 'Search for destination',
+          ),
         ],
       ),
-      
     );
   }
 }
