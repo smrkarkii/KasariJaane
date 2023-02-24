@@ -14,7 +14,7 @@ class MainHome extends StatefulWidget {
 }
 
 class _MainHomeState extends State<MainHome> {
-LatLng center = LatLng(27.74238819677683, 85.33275784413591);
+LatLng center = LatLng(27.681932894249172, 85.31878090723217);
 @override
   void initState() {
     getCenter();
@@ -34,7 +34,7 @@ LatLng center = LatLng(27.74238819677683, 85.33275784413591);
   @override
   Widget build(BuildContext context) {
     List<LatLng> latLngList = [
-      LatLng(27.72, 85.33),
+      LatLng(27.681932894249172, 85.31878090723217),
       LatLng(27.617245, 85.323459),
       LatLng(27.687945, 85.353459),
       LatLng(center.latitude, center.longitude),
@@ -93,6 +93,8 @@ class Mapintro extends StatelessWidget {
         options: MapOptions(
           center: center,
           zoom: 15,
+          minZoom: 5.0,
+          maxZoom: 18,
         ),
         nonRotatedChildren: [
           AttributionWidget(
