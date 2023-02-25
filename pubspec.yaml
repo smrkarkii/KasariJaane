@@ -36,7 +36,8 @@ dependencies:
   flutter_map: any
   flutter_map_marker_cluster: any
   geolocator: ^7.7.0
-
+  http: ^0.13.5
+  url_launcher: ^6.1.10
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kasarijaane/components/searchbar.dart';
+import 'package:kasarijaane/driver/homepage.dart';
 import 'components/constants.dart';
 import './passenger/explore.dart';
 import './passenger/notification.dart';
-import './passenger/newsfeed.dart';
+import './passenger/Profile.dart';
 import './mainhome.dart';
 
 void main() {
@@ -32,8 +33,8 @@ class _HomePageState extends State<HomePage> {
   static  List<Widget> _widgetOptions = <Widget>[
    MainHome(),
     Explore(),
-    Newsfeed(),
-    Notifications()
+    Notifications(),
+    Profile(),
   ];
 
   void _onItemTapped(int index) {
@@ -67,11 +68,11 @@ class _HomePageState extends State<HomePage> {
                label: 'Explore',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.feed_outlined), 
-              label: 'Feed'),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.notifications_outlined),
+              icon: Icon(Icons.notifications_outlined), 
               label: 'Notification'),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person_outline),
+              label: 'Profile'),
           ],
           currentIndex: _selectedIndex,
           selectedItemColor: kbrightgreen,
